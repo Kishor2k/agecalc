@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&display=swap");
+
+:root {
+  --purple: hsl(259, 100%, 65%);
+  --light-red: hsl(0, 100%, 67%);
+  --white: hsl(0, 0%, 100%);
+  --off-white: hsl(0, 0%, 94%);
+  --light-grey: hsl(0, 0%, 86%);
+  --smokey-grey: hsl(0, 1%, 44%);
+  --off-black: hsl(0, 0%, 8%);
+}
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 10px;
+  background: var(--off-white);
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+main {
+  max-width: 600px;
+  background: var(--white);
+  padding: 20px;
+  padding-bottom: 50px;
+  border-radius: 30px 30px 100px 30px;
+}
+form {
+  display: flex;
+  gap: 12px;
+  padding-top: 20px;
+  padding-bottom: 50px;
+  border-bottom: 2px solid var(--light-grey);
+  position: relative;
+}
+.form-group {
+  color: var(--smokey-grey);
+}
+.form-group.error {
+  color: var(--light-red);
+}
+.form-group.error input {
+  border: 1px solid var(--light-red);
+}
+.form-group.error p.error {
+  display: block;
+}
+label {
+  display: block;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+  font-weight: 700;
+}
+
+input {
+  width: 100%;
+  border: 1px solid var(--light-grey);
+  padding: 14px;
+  border-radius: 6px;
+  color: var(--off-black);
+  font-size: 18px;
+}
+input:focus {
+  border: 1px solid var(--purple);
+  outline: 1px solid transparent;
+}
+input::placeholder {
+  font-size: inherit;
+}
+
+p.error {
+  color: var(--light-red);
+  font-size: 12px;
+  font-weight: 400;
+  font-style: italic;
+  display: none;
+}
+.button {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  background: var(--purple);
+  width: 50px;
+  border: 0;
+  border-radius: 50%;
+  padding: 12px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+.button:hover {
+  background: var(--off-black);
+}
+.output {
+  margin-top: 3rem;
+  font-size: clamp(40px, 2.5rem + 2vw, 52px);
+  font-style: italic;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--off-black);
+}
+.output span {
+  color: var(--purple);
+}
