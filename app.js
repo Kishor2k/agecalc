@@ -9,7 +9,7 @@ let dayOutput = document.querySelector("#dayOutput");
 
 let date = new Date();
 let currentYear = date.getFullYear();
-let currentMonth = date.getMonth();
+let currentMonth = date.getMonth() + 1;
 let currentDay = date.getDate();
 
 form.addEventListener("submit", (e) => {
@@ -81,13 +81,39 @@ const validateInputs = () => {
     setSuccess(month);
   }
 
-  let daysOld = Math.abs(currentDay - dayValue);
-  let yearsOld = currentYear - yearValue;
-  let monthsOld = Math.abs(currentMonth - monthValue);
+  // get Year
+  let yearAge = currentYear - yearValue;
+  // get months
+  if (currentMonth >= monthValue) {
+    monthAge = currentMonth - monthValue;
+  } else {
+    yearAge--;
+    monthAge = 12 + currentMonth - monthValue;
+  }
+  // get days
+  if (currentDay >= dayValue) {
+    dayAge = currentDay - dayValue;
+  } else {
+    monthAge--;
+    if (monthValue == 2 && checkLeapYear(yearValue)) {
+      dayAge = 29 + currentDay - dayValue;
+    } else if (monthValue == 2 && checkLeapYear(yearValue)) {
+      dayAge = 28 + currentDay - monthValue;
+    } else if (
+      monthValue == 4 ||
+      monthValue == 6 ||
+      monthValue == 9 ||
+      monthValue == 11
+    ) {
+      dayAge = 30 + currentDay - dayValue;
+    } else {
+      dayAge = 31 + currentDay - dayValue;
+    }
+  }
 
-  yearOutput.innerText = yearsOld;
-  monthOutput.innerText = monthsOld;
-  dayOutput.innerText = daysOld;
+  yearOutput.innerText = yearAge;
+  monthOutput.innerText = monthAge;
+  dayOutput.innerText = dayAge;
 };
 const checkLeapYear = (year) => {
   if ((0 == year % 4 && 0 != year % 100) || 0 == year % 400) {
